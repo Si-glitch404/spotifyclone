@@ -12,11 +12,13 @@ body {
     padding: 0.5rem;
 }
 
+/* MODIFIED CODE - Responsive Sidebar */
 .sidebar {
     width: 340px;
     border-radius: 1rem;
     background-color: black;
     margin-right: 0.5rem;
+    transition: width 0.3s ease-in-out;
 }
 
 .main_content {
@@ -27,6 +29,7 @@ body {
     padding: 0 1.5rem 0 1.5rem;
 }
 
+/* MODIFIED CODE - Responsive Music Player */
 .music_player {
     background-color: black;
     position: fixed;
@@ -164,7 +167,6 @@ a {
     display: flex;
     align-items: center;
     gap: 1rem;
-  
 }
 
 .nav-items {
@@ -174,7 +176,6 @@ a {
 .search-bar {
     position: relative;
     width: 300px;
-      margin-right: 80px;
 }
 
 .search-bar i {
@@ -199,22 +200,148 @@ a {
 }
 
 @media(max-width: 1000px) {
-    .hide {
+    /* MODIFIED CODE - Hiding text in sidebar and making it smaller */
+    .nav-option a,
+    .lib-option a,
+    .lib-box {
         display: none;
     }
-
     .sidebar {
         width: 70px;
     }
-
     .main_content {
         padding: 0 0.5rem;
     }
-
+    /* MODIFIED CODE - Adjusting card width for smaller screens */
     .card {
         width: calc(50% - 1rem);
+        margin: 0.5rem;
+    }
+    .hide {
+        display: none;
     }
 }
+
+/* NEW MEDIA QUERY - For even smaller screens (mobile portrait) */
+@media(max-width: 768px) {
+    .main {
+        flex-direction: column;
+        padding: 0;
+    }
+    .sidebar {
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 20;
+        border-radius: 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #121212;
+    }
+    .sidebar .nav {
+        flex-direction: row;
+        width: 100%;
+        height: auto;
+        justify-content: space-around;
+        padding: 0;
+    }
+    .sidebar .nav-option {
+        text-align: center;
+        padding: 0.5rem;
+        line-height: normal;
+    }
+    .sidebar .nav-option a {
+        display: block;
+        font-size: 0.75rem;
+        margin: 0.25rem 0 0 0;
+    }
+    .sidebar .library {
+        display: none;
+    }
+
+    .main_content {
+        padding-bottom: 72px; /* Space for the fixed music player */
+    }
+
+    .sticky-nav {
+        padding: 1rem;
+        justify-content: space-between;
+    }
+    .sticky-nav-icons {
+        display: none;
+    }
+    .sticky-nav-options {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .sticky-nav-options .hide {
+        display: none;
+    }
+
+    .recent-playlists {
+        grid-template-columns: 1fr;
+    }
+
+    .card-container {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+    }
+    .card {
+        flex: 0 0 150px;
+        margin-left: 0;
+    }
+
+    /* NEW CODE - Music player on small screens */
+    .music_player {
+        flex-direction: column;
+        height: auto;
+        padding: 0.5rem;
+        text-align: center;
+    }
+    .album, .player, .controls {
+        width: 100%;
+        justify-content: center;
+    }
+    .album {
+        margin-bottom: 0.5rem;
+    }
+    .album img {
+        height: 40px;
+        width: 40px;
+    }
+    .album-info {
+        margin-right: 1rem;
+    }
+    .album-info .song-title {
+        font-size: 0.9rem;
+    }
+    .album-info .artist-name {
+        font-size: 0.75rem;
+    }
+    .player-controls {
+        gap: 1rem;
+    }
+    .player-controls i {
+        font-size: 1.2rem;
+    }
+    .play-button {
+        font-size: 2rem !important;
+    }
+    .playback-bar {
+        margin-top: 0;
+    }
+    .controls {
+        display: none; /* Hide for a cleaner mobile UI */
+    }
+}
+
 
 .greeting {
     font-size: 2rem;
@@ -465,4 +592,4 @@ a {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-}
+    }
